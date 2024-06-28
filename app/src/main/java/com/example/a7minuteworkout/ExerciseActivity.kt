@@ -5,18 +5,16 @@ import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minuteworkout.databinding.ActivityExerciseBinding
 import com.example.a7minuteworkout.databinding.DialogCustomBackConfirmationBinding
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Locale
 
 class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var binding:ActivityExerciseBinding?=null
@@ -53,6 +51,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setUpExerciseStatusRecyclerView()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         customDialogForBackButton()
        // super.onBackPressed()
@@ -131,7 +130,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun setRestProgressbar(){
         binding?.progressBar?.progress=restProgress
-        restTimer=object :CountDownTimer(1000,1000){
+        restTimer=object :CountDownTimer(10000,1000){
             override fun onTick(p0: Long) {
             restProgress++
                 binding?.progressBar?.progress=1-restProgress
@@ -150,7 +149,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun setExerciseProgressbar(){
         binding?.progressBarExercise?.progress=exerciseProgress
-        exerciseTimer=object :CountDownTimer(1000,1000){
+        exerciseTimer=object :CountDownTimer(35000,1000){
             override fun onTick(p0: Long) {
                 exerciseProgress++
                 binding?.progressBarExercise?.progress=1-exerciseProgress
